@@ -31,11 +31,11 @@ defmodule Bumblebee.Text.Generation.Stack do
   @doc """
   Push a value to the top of the stack.
   """
-  deftransform push(%Stack{data: data, pointer: pointer} = stack, value) do
+  deftransform push(%Stack{data: data, pointer: pointer} = _stack, value) do
     unless Nx.rank(value) == 0, do: raise("can only push scalar values to stack")
 
-    %{
-      data: Nx.put_slice(data, [pointer], value),
+    %Stack{
+      data: Nx.put_slice(data, [pointer], Nx.tensor([value])),
       pointer: Nx.add(pointer, 1)
     }
   end
@@ -43,22 +43,24 @@ defmodule Bumblebee.Text.Generation.Stack do
   @doc """
   Pops a value from the stack.
   """
-  defn pop(%Stack{data: data, pointer: pointer} = stack) do
-    value = data[[pointer]]
-    {value, %{stack | pointer: Nx.subtract(pointer, 1)}}
+  deftransform pop(%Stack{data: data, pointer: pointer} = stack) do
+    new_pointer = Nx.subtract(pointer, 1)
+    value = data[[new_pointer]]
+    {value, %Stack{stack | pointer: new_pointer}}
   end
 
   @doc """
   Peeks at the head of the stack.
   """
-  defn peek(%Stack{data: data, pointer: pointer}) do
-    data[[pointer]]
+  deftransform peek(%Stack{data: data, pointer: pointer}) do
+    new_pointer = Nx.subtract(pointer, 1)
+    data[[new_pointer]]
   end
 
   @doc """
   Returns the length of the stack.
   """
-  defn length(%Stack{pointer: pointer}) do
+  deftransform stack_length(%Stack{pointer: pointer}) do
     pointer
   end
 end

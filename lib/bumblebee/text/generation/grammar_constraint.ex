@@ -5,6 +5,8 @@ defmodule Bumblebee.Text.Generation.GrammarConstraint do
   alias Bumblebee.Text.Generation.Stack
   alias EBNF.ParseState
 
+  import Nx.Defn
+
   alias __MODULE__
 
   # Models a constraint
@@ -52,7 +54,7 @@ defmodule Bumblebee.Text.Generation.GrammarConstraint do
         stack
       else
 
-        
+
       end
     end
   end
