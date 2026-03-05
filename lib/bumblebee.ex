@@ -250,6 +250,10 @@ defmodule Bumblebee do
     "InternVLChatModel" =>
       {Bumblebee.Multimodal.InternVl, :for_conditional_generation},
     "InternVitModel" => {Bumblebee.Vision.InternVit, :base},
+    "KimiK2Model" => {Bumblebee.Text.KimiK2, :base},
+    "KimiK2ForCausalLM" => {Bumblebee.Text.KimiK2, :for_causal_language_modeling},
+    "KimiK2ForSequenceClassification" =>
+      {Bumblebee.Text.KimiK2, :for_sequence_classification},
     "LayoutLMForMaskedLM" => {Bumblebee.Multimodal.LayoutLm, :for_masked_language_modeling},
     "LayoutLMForQuestionAnswering" => {Bumblebee.Multimodal.LayoutLm, :for_question_answering},
     "LayoutLMForSequenceClassification" =>
@@ -491,6 +495,7 @@ defmodule Bumblebee do
     "hubert" => :wav2vec2,
     "internlm2" => :llama,
     "intern_vl" => :llama,
+    "kimi_k2" => :llama,
     "layoutlm" => :layout_lm,
     "llama" => :llama,
     "llava" => :llama,
