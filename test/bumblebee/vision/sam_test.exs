@@ -18,6 +18,12 @@ defmodule Bumblebee.Vision.SamTest do
     outputs = Axon.predict(model, params, inputs)
 
     assert {1, _height, _width, _hidden_size} = Nx.shape(outputs.hidden_state)
+
+    # TODO: Fill in reference values from generate_vision_reference_outputs.py
+    # assert_all_close(
+    #   outputs.hidden_state[[.., 1..3, 1..3, 1..3]],
+    #   Nx.tensor([[...]])
+    # )
   end
 
   describe "model structure" do

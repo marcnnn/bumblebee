@@ -18,6 +18,12 @@ defmodule Bumblebee.Vision.Mask2FormerTest do
     outputs = Axon.predict(model, params, inputs)
 
     assert {1, _num_queries, _hidden_size} = Nx.shape(outputs.hidden_state)
+
+    # TODO: Fill in reference values from generate_vision_reference_outputs.py
+    # assert_all_close(
+    #   outputs.hidden_state[[.., 0..2, 0..2]],
+    #   Nx.tensor([[...]])
+    # )
   end
 
   test ":for_instance_segmentation" do
@@ -35,6 +41,12 @@ defmodule Bumblebee.Vision.Mask2FormerTest do
     outputs = Axon.predict(model, params, inputs)
 
     assert {1, _num_queries, _num_classes_plus_one} = Nx.shape(outputs.logits)
+
+    # TODO: Fill in reference values from generate_vision_reference_outputs.py
+    # assert_all_close(
+    #   outputs.logits[[.., 0..2, 0..2]],
+    #   Nx.tensor([[...]])
+    # )
   end
 
   describe "model structure" do

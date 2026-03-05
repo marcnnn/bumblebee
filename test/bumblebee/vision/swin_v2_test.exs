@@ -19,6 +19,17 @@ defmodule Bumblebee.Vision.SwinV2Test do
 
     assert Nx.shape(outputs.hidden_state) == {1, 16, 64}
     assert Nx.shape(outputs.pooled_state) == {1, 64}
+
+    # TODO: Fill in reference values from generate_vision_reference_outputs.py
+    # assert_all_close(
+    #   outputs.hidden_state[[.., 1..3, 1..3]],
+    #   Nx.tensor([[...]])
+    # )
+    #
+    # assert_all_close(
+    #   outputs.pooled_state[[.., 1..3]],
+    #   Nx.tensor([[...]])
+    # )
   end
 
   test ":for_image_classification" do
@@ -36,6 +47,12 @@ defmodule Bumblebee.Vision.SwinV2Test do
     outputs = Axon.predict(model, params, inputs)
 
     assert {1, _num_labels} = Nx.shape(outputs.logits)
+
+    # TODO: Fill in reference values from generate_vision_reference_outputs.py
+    # assert_all_close(
+    #   outputs.logits,
+    #   Nx.tensor([[...]])
+    # )
   end
 
   describe "model structure" do
