@@ -136,6 +136,9 @@ defmodule Bumblebee do
     "DeiTModel" => {Bumblebee.Vision.Deit, :base},
     "DetrModel" => {Bumblebee.Vision.Detr, :base},
     "DetrForObjectDetection" => {Bumblebee.Vision.Detr, :for_object_detection},
+    "DPTModel" => {Bumblebee.Vision.Dpt, :base},
+    "DPTForDepthEstimation" => {Bumblebee.Vision.Dpt, :for_depth_estimation},
+    "DPTForSemanticSegmentation" => {Bumblebee.Vision.Dpt, :for_semantic_segmentation},
     "Dinov2Model" => {Bumblebee.Vision.DinoV2, :base},
     "Dinov2Backbone" => {Bumblebee.Vision.DinoV2, :backbone},
     "Dinov2ForImageClassification" => {Bumblebee.Vision.DinoV2, :for_image_classification},
@@ -290,6 +293,8 @@ defmodule Bumblebee do
     "Phi3ForCausalLM" => {Bumblebee.Text.Phi3, :for_causal_language_modeling},
     "Phi3ForSequenceClassification" => {Bumblebee.Text.Phi3, :for_sequence_classification},
     "Phi3ForTokenClassification" => {Bumblebee.Text.Phi3, :for_token_classification},
+    "RegNetModel" => {Bumblebee.Vision.RegNet, :base},
+    "RegNetForImageClassification" => {Bumblebee.Vision.RegNet, :for_image_classification},
     "ResNetForImageClassification" => {Bumblebee.Vision.ResNet, :for_image_classification},
     "ResNetModel" => {Bumblebee.Vision.ResNet, :base},
     "RoFormerModel" => {Bumblebee.Text.Roformer, :base},
@@ -351,6 +356,8 @@ defmodule Bumblebee do
     "ViTForImageClassification" => {Bumblebee.Vision.Vit, :for_image_classification},
     "ViTForMaskedImageModeling" => {Bumblebee.Vision.Vit, :for_masked_image_modeling},
     "ViTModel" => {Bumblebee.Vision.Vit, :base},
+    "YolosModel" => {Bumblebee.Vision.Yolos, :base},
+    "YolosForObjectDetection" => {Bumblebee.Vision.Yolos, :for_object_detection},
     "YiModel" => {Bumblebee.Text.Yi, :base},
     "YiForCausalLM" => {Bumblebee.Text.Yi, :for_causal_language_modeling},
     "YiForSequenceClassification" => {Bumblebee.Text.Yi, :for_sequence_classification},
@@ -400,9 +407,12 @@ defmodule Bumblebee do
   @model_type_to_featurizer %{
     "convnext" => Bumblebee.Vision.ConvNextFeaturizer,
     "deit" => Bumblebee.Vision.DeitFeaturizer,
+    "dpt" => Bumblebee.Vision.VitFeaturizer,
+    "regnet" => Bumblebee.Vision.ConvNextFeaturizer,
     "resnet" => Bumblebee.Vision.ConvNextFeaturizer,
     "vit" => Bumblebee.Vision.VitFeaturizer,
-    "whisper" => Bumblebee.Audio.WhisperFeaturizer
+    "whisper" => Bumblebee.Audio.WhisperFeaturizer,
+    "yolos" => Bumblebee.Vision.VitFeaturizer
   }
 
   @model_type_to_tokenizer_type %{
