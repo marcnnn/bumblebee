@@ -92,6 +92,7 @@ defmodule Bumblebee.MixProject do
           Bumblebee.Text.ClipText,
           Bumblebee.Text.Distilbert,
           Bumblebee.Text.Gemma,
+          Bumblebee.Text.Gemma4,
           Bumblebee.Text.Gpt2,
           Bumblebee.Text.GptBigCode,
           Bumblebee.Text.GptNeoX,
